@@ -1,5 +1,6 @@
 import { FormEvent, useContext, useState } from "react";
 import { AuthContext } from "../contexts/AuthContext";
+import styles from "../styles/pages/Home.module.css";
 
 export default function Home() {
   const [email, setEmail] = useState<string>();
@@ -17,18 +18,24 @@ export default function Home() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button type="submit">Entrar</button>
-    </form>
+    <div className={styles.container}>
+      <form className={styles.formContainer} onSubmit={handleSubmit}>
+        <input
+          className={styles.input}
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          className={styles.input}
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button className={styles.submit} type="submit">
+          Entrar
+        </button>
+      </form>
+    </div>
   );
 }
